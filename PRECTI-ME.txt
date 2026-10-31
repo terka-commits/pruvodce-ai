@@ -1,0 +1,16 @@
+Průvodce AI (prototyp pro soutěž AI výzva pro Česko)
+
+JAK OTEVŘÍT
+Dvojklikem na index.html (otevře se v prohlížeči, doporučuji Chrome nebo Safari).
+Nepotřebuje internet kromě písem a odkazů na nástroje. Data se ukládají jen v prohlížeči.
+Pro ukázku klikněte na "Otevřít ukázkovou firmu".
+
+CO JE CO
+index.html          hotová stránka, otevřít dvojklikem
+pruvodce-zdroj.html stejný obsah ve verzi pro Claude artefakt (tak je publikovaný online)
+prepis-session.md   textový přepis celé konverzace (Markdown)
+
+POZNÁMKA
+V této lokální verzi nefungují AI návrhy (místo nich se zobrazí šablony).
+Plně fungují jen v publikovaném artefaktu na claude.ai.
+Online verze: https://claude.ai/artifact/SqpJzUoqNrTPcd8g54EhAV
