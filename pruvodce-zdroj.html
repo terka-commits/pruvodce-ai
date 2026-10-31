@@ -2,26 +2,30 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: rozcestník. Bílý základ, klidná petrolejová jako barva akce, směrovky v barvě písku a dřeva, zelená = hotovo.
-   Nahoře přepínač pohledu, pro vedení záložky s podtržením; jeden sloupec do 1040px. */
+/* Layout: rozcestník. Jako turistické značení KČT: chladná bílá, žluté směrovky, značková modrá jako barva akce, zelená = hotovo. Písmo Barlow vychází z dopravních cedulí.
+   Nahoře plovoucí hlavička s přepínačem pohledu, na menších displejích schovaná v menu. */
 :root{
-  --bg:#FFFFFF;--paper:#F5F7F7;--ink:#14232B;--mute:#5C6B72;--line:#DCE4E6;
-  --blue:#0B6E8E;--blue-ink:#FFFFFF;--blue-soft:#E4F1F5;
-  --red:#B8563F;--green:#2E7D57;--green-soft:#E2F1E8;--yellow:#D99A2B;--yellow-soft:#FBF3E2;
-  --warn:#B85A1E;--warn-soft:#F8EADF;--plate:#FFFFFF;--plate-ink:#14232B;--wood:#9C7650;--hill:#E6EFE9;--sign:#F4EBD8;
-  --c1:#0B6E8E;--c2:#D99A2B;--c3:#3F8061;--c4:#B8563F;--c5:#94A3AA;--c6:#5E6E9E;
-  --f-d:"Bricolage Grotesque","IBM Plex Sans",system-ui,sans-serif;
-  --f-b:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --bg:#EFF2F1;--paper:#FFFFFF;--ink:#101615;--mute:#55605E;--line:rgba(16,22,21,.15);
+  --blue:#1450B4;--blue-ink:#FFFFFF;--blue-soft:#DEE8F8;
+  --red:#C8281F;--green:#14794A;--green-soft:#DCF0E5;--yellow:#F2C200;--yellow-soft:#FDF3C4;
+  --warn:#B5420F;--warn-soft:#FBE6DA;--plate:#FFFFFF;--plate-ink:#101615;--wood:#68736F;--hill:#D5E3DA;--sign:#F7CE1E;
+  --c1:#1450B4;--c2:#E0B000;--c3:#14794A;--c4:#C8281F;--c5:#97A3A0;--c6:#6A4FB0;
+  --shell:rgba(16,22,21,.05);--ring:rgba(16,22,21,.09);--edge:rgba(255,255,255,.8);--ambient:rgba(16,30,40,.26);--field:rgba(16,22,21,.45);
+  --glass:rgba(255,255,255,.74);--veil:rgba(239,242,241,.88);--spring:cubic-bezier(.32,.72,0,1);
+  --f-d:"Barlow Condensed","Barlow",system-ui,sans-serif;
+  --f-b:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
   color-scheme:light;
 }
 :root[data-theme="dark"]{
-  --bg:#0F181C;--paper:#162228;--ink:#E5EDF0;--mute:#93A6AE;--line:#26383F;
-  --blue:#4DB6D6;--blue-ink:#062029;--blue-soft:#15313B;
-  --red:#E07A62;--green:#5CC48D;--green-soft:#143022;--yellow:#E9B652;--yellow-soft:#2E2717;
-  --warn:#EE9B5E;--warn-soft:#38251A;--plate:#162228;--plate-ink:#E5EDF0;--wood:#7E6143;--hill:#16271E;--sign:#33301F;
-  --c1:#4DB6D6;--c2:#E9B652;--c3:#5CC48D;--c4:#E07A62;--c5:#7C8E96;--c6:#93A4D6;
+  --bg:#0D1211;--paper:#171D1C;--ink:#EDF2F0;--mute:#A0ACA9;--line:rgba(237,242,240,.16);
+  --blue:#7FB0FF;--blue-ink:#07193A;--blue-soft:#17263F;
+  --red:#F0776C;--green:#5CC98F;--green-soft:#11291E;--yellow:#F2C94C;--yellow-soft:#2E2808;
+  --warn:#F29A68;--warn-soft:#33200F;--plate:#171D1C;--plate-ink:#EDF2F0;--wood:#5E6966;--hill:#16241D;--sign:#3D3608;
+  --c1:#7FB0FF;--c2:#F2C94C;--c3:#5CC98F;--c4:#F0776C;--c5:#7E8A87;--c6:#B6A2EC;
+  --shell:rgba(237,242,240,.06);--ring:rgba(237,242,240,.1);--edge:rgba(255,255,255,.06);--ambient:rgba(0,0,0,.6);--field:rgba(237,242,240,.42);
+  --glass:rgba(23,29,28,.74);--veil:rgba(13,18,17,.88);
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -42,8 +46,6 @@ button,input,select,textarea{font:inherit;color:inherit}
 #demolbl{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 .top .right{flex-wrap:nowrap}
 .top .right{justify-self:end}
-@media (max-width:1240px){.top{grid-template-columns:1fr auto}.mid{grid-column:1/-1;grid-row:2;justify-self:start;align-items:flex-start}}
-@media (max-width:640px){.top{grid-template-columns:1fr}.top .right{justify-self:start;flex-wrap:wrap}}
 .brand{display:flex;gap:12px;align-items:center}
 .brand b{display:block;font:700 24px/1 var(--f-d);letter-spacing:-.01em}
 .brand small{display:block;font-size:13px;color:var(--mute);margin-top:2px;white-space:nowrap}
@@ -95,7 +97,6 @@ textarea{min-height:96px;resize:vertical}
 .gb .eyebrow{color:var(--blue);margin-bottom:2px}
 #toast{position:fixed;left:50%;transform:translate(-50%,20px);bottom:calc(100px + env(safe-area-inset-bottom,0px));max-width:min(460px,calc(100vw - 32px));background:var(--ink);color:var(--bg);border-radius:10px;padding:10px 16px 10px 10px;font-size:15px;opacity:0;pointer-events:none;z-index:20;display:flex;gap:10px;align-items:center}
 #toast.show{opacity:1;transform:translate(-50%,0)}
-@media (prefers-reduced-motion:no-preference){#toast{transition:opacity .25s,transform .25s}.track i,.prog i{transition:width .6s}}
 /* další krok */
 .next{display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:center;background:var(--blue-soft);border-radius:16px;padding:24px 26px;margin-bottom:18px}
 .next h2{font-size:28px}
@@ -286,15 +287,13 @@ details.qa p{margin:8px 0 0}
 .treesvg{width:200px;max-width:100%;height:auto;display:block;margin:0 auto}
 .treecount{list-style:none;padding:0;margin:10px 0;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px}
 @media (max-width:640px){.ctree{grid-template-columns:1fr}}
-@media (prefers-reduced-motion:no-preference){.treesvg{animation:grow .6s ease-out}}
-@keyframes grow{from{transform:scale(.92);opacity:.6}to{transform:none;opacity:1}}
 .mt{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:12px;align-items:center;padding:8px 0}
 .md{display:flex;flex-direction:column;align-items:center;justify-content:center;width:52px;height:52px;border-radius:10px;background:var(--blue-soft);color:var(--blue);font-size:12px;line-height:1}.md b{font:700 20px var(--f-d)}
-.adkar{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:14px 0 26px}
-.adk{border:1px solid var(--line);border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:2px;font-size:13px;background:var(--bg)}
-.adk b{font:700 22px var(--f-d);color:var(--blue)}.adk small{color:var(--mute)}
-.adk.on{border-color:var(--blue);background:var(--blue-soft)}
-@media (max-width:640px){.adkar{gap:4px}.adk{padding:6px 4px;font-size:10px;text-align:center}.adk b{font-size:18px}.adk small{display:none}}
+.stepstrip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:14px 0 26px}
+.stepbox{border:1px solid var(--line);border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:2px;font-size:13px;background:var(--bg)}
+.stepbox b{font:700 22px var(--f-d);color:var(--blue)}.stepbox small{color:var(--mute)}
+.stepbox.on{border-color:var(--blue);background:var(--blue-soft)}
+
 .roles3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:18px}.roles3 div{border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;font-size:14px}.roles3 span{color:var(--mute);font-size:13px}
 @media (max-width:640px){.roles3{grid-template-columns:1fr}}
 .tiles{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
@@ -336,15 +335,183 @@ details.qa p{margin:8px 0 0}
   .scale{grid-template-columns:1fr}.bar{grid-template-columns:1fr 50px}.bar .track{grid-column:1/-1;order:3}
   .tli{grid-template-columns:1fr}.amb-row{grid-template-columns:1fr}.seg button{padding:6px 9px}
 }
+/* Redesign: editorial split. Značení v krajině, úzké titulky jako na cedulích, plovoucí hlavička, karty jako dvojitý rám.
+   Rám dělá tlustý průsvitný border + background-clip, takže vnitřní rádius sedí sám a HTML se nemění. */
+html{scroll-padding-top:104px}
+html.menu-open{overflow:hidden}
+body{font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;position:relative}
+h1,h2,h3{font-weight:600;letter-spacing:0;overflow-wrap:break-word}
+h1{font-size:clamp(44px,5.2vw,72px);line-height:1}
+h2{font-size:clamp(27px,2.6vw,34px);margin-bottom:8px}
+h3{font-size:22px;font-weight:600;letter-spacing:0}
+a,.linkbtn{text-underline-offset:3px;text-decoration-thickness:1px}
+.eyebrow{font:500 11px/1.4 var(--f-b);letter-spacing:.16em}
+.slide>.eyebrow,.intro>.eyebrow,.card.white>.eyebrow{display:block;width:fit-content;padding:5px 12px;border-radius:999px;background:var(--shell);box-shadow:0 0 0 1px var(--ring);margin-bottom:18px}
+.slide>.eyebrow::before,.intro>.eyebrow::before{content:"";display:inline-block;vertical-align:-2px;width:18px;height:12px;margin-right:9px;border-radius:2px;background:linear-gradient(#fff 33%,var(--blue) 33% 67%,#fff 67%);box-shadow:0 0 0 1px var(--ring)}
+.lead{font-size:clamp(17px,1.5vw,20px);line-height:1.55;margin-bottom:32px}
+.intro>h1{font-size:clamp(48px,6.4vw,92px);max-width:16ch;margin:0 0 20px}
+.slide>h1{margin:0 0 16px}
+.slide:not(.wide){max-width:820px}
+.plain{margin:16px 0 44px}.plain h2{font-size:26px}
+
+/* plovoucí hlavička */
+.top{position:sticky;top:14px;z-index:30;display:flex;align-items:center;gap:20px;width:fit-content;max-width:100%;margin:14px auto 44px;padding:8px 10px 8px 12px;border-radius:999px;isolation:isolate}
+.top::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:var(--glass);-webkit-backdrop-filter:blur(18px) saturate(1.3);backdrop-filter:blur(18px) saturate(1.3);box-shadow:0 0 0 1px var(--ring),0 18px 40px -24px var(--ambient),inset 0 1px 0 var(--edge)}
+.menu{display:contents}
+.mid{flex-direction:row;align-items:center;gap:10px}
+.right{flex-wrap:nowrap;gap:8px}
+.brand{gap:10px;flex:none}
+.brand b{font:600 25px/1 var(--f-d);letter-spacing:.005em}
+.brand small{display:none}
+.brand .masc{width:36px;height:36px;border-radius:50%}
+#demolbl{font-size:10px;letter-spacing:.14em;white-space:nowrap}
+.seg{background:var(--shell);border:0;border-radius:999px;box-shadow:0 0 0 1px var(--ring)}
+.seg button{border-radius:999px;padding:6px 14px;transition:color .4s var(--spring),background-color .4s var(--spring)}
+.seg button[aria-pressed="true"]{background:var(--paper);box-shadow:0 2px 8px -2px var(--ambient),inset 0 1px 0 var(--edge)}
+.theme{border:0;box-shadow:0 0 0 1px var(--ring);border-radius:999px;height:38px;padding:0 14px;transition:background-color .4s var(--spring),transform .4s var(--spring)}
+.theme:hover{background:var(--shell)}.theme:active{transform:scale(.97)}
+.theme.icon{width:38px}
+.theme svg,.stile svg,.mk svg,.ailink.icon svg{stroke-width:1.4}
+.top .right>*+.userchip{margin-left:4px;padding-left:12px;border-left:1px solid var(--line)}
+.userchip{gap:10px}
+.burger{display:none;position:relative;z-index:2;width:40px;height:40px;border:0;border-radius:50%;background:var(--shell);box-shadow:0 0 0 1px var(--ring);cursor:pointer;margin-left:auto}
+.burger i{position:absolute;left:12px;right:12px;top:50%;height:1.5px;margin-top:-.75px;background:var(--ink);border-radius:2px;transition:transform .55s var(--spring)}
+.burger i:first-child{transform:translateY(-4px)}.burger i:last-child{transform:translateY(4px)}
+.burger[aria-expanded="true"] i:first-child{transform:rotate(45deg)}.burger[aria-expanded="true"] i:last-child{transform:rotate(-45deg)}
+@media (max-width:1180px){
+  .top{width:100%;justify-content:space-between;margin-bottom:32px}
+  .brand{position:relative;z-index:2}
+  .burger{display:block}
+  .menu{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;position:fixed;inset:0;z-index:1;padding:96px 20px 40px;background:var(--veil);-webkit-backdrop-filter:blur(40px);backdrop-filter:blur(40px);visibility:hidden;opacity:0;transition:opacity .5s var(--spring),visibility 0s .5s}
+  .menu.open{visibility:visible;opacity:1;transition:opacity .5s var(--spring)}
+  .menu>*{opacity:0;transform:translateY(48px);transition:opacity .7s var(--spring),transform .7s var(--spring)}
+  .menu.open>*{opacity:1;transform:none}
+  .menu.open>:nth-child(1){transition-delay:.1s}.menu.open>:nth-child(2){transition-delay:.18s}
+  .mid{flex-direction:column;gap:12px;align-items:center}
+  .seg button{padding:10px 16px;font-size:16px}
+  .top .right{flex-direction:column;gap:18px}
+  .top .right>*+.userchip{margin:0;padding:0;border:0}
+  .userchip{flex-direction:column;gap:14px}.userchip span{text-align:center;font-size:17px}
+  .theme,.theme.icon{height:44px}.theme.icon{width:44px}
+}
+
+/* karty: dvojitý rám */
+.card,.next,.cont,.tile,.dk-slide{border:6px solid var(--shell);background-clip:padding-box;border-radius:30px;box-shadow:0 0 0 1px var(--ring),0 32px 64px -44px var(--ambient),inset 0 1px 0 var(--edge)}
+.card{padding:30px;margin-bottom:24px}
+.card.white,.card{background-color:var(--paper)}
+.grid,.grid3{gap:24px}.stack{gap:24px;margin-bottom:24px}.kpis{gap:14px;margin-bottom:24px}
+.next{padding:28px 32px;margin-bottom:24px}.next h2{font-size:clamp(26px,2.8vw,36px)}
+.cont{padding:24px 26px}.cont b{font-weight:600;font-size:30px;letter-spacing:0}
+.together,.note,.gb,.promise{border-radius:18px}
+.together{padding:18px 22px}
+.tile{padding:22px;transition:transform .7s var(--spring)}
+.tile:hover{border-color:var(--shell);transform:translateY(-3px)}
+.tile b{font-weight:600}
+.kpi,.uc,.qcard,.meta div,.stepbox,.roles3 div,.team,.ai-out{border-radius:18px;box-shadow:inset 0 1px 0 var(--edge)}
+.kpi{padding:20px}.kpi .v,.dk-nums b,.tile b,.uc .hrs{font-weight:600;font-variant-numeric:lining-nums tabular-nums;letter-spacing:0}
+.stile{border-radius:50%}.stile.sm{border-radius:50%}.md{border-radius:16px}.md b{font-weight:600}
+.stepbox b,.bub b,.chlist b,.steps b,.chinfo b{font-weight:600;letter-spacing:0}
+.mile{padding:16px 0}
+.promise{font-weight:500;font-size:30px;letter-spacing:0;padding:20px 24px}
+.demo-bar{border:0;border-radius:999px;box-shadow:0 0 0 1px color-mix(in srgb,var(--yellow) 40%,transparent);padding:9px 20px;margin-bottom:28px;width:fit-content;max-width:100%}
+.pill,.ai-note{border-radius:999px;padding:3px 10px;font-weight:600;font-size:11px;letter-spacing:.06em}
+.chips span{padding:3px 12px}
+.rec,.quote,.qcard .a,.dk-quote{border-left-width:2px}
+.rec{padding-left:18px}
+.card.advice .rec{border-radius:0 14px 14px 0}
+
+/* tlačítka: pilulka se šipkou ve vlastním kolečku */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;border-radius:999px;padding:12px 24px;font-weight:500;min-height:44px;transition:background-color .5s var(--spring),box-shadow .5s var(--spring),transform .5s var(--spring)}
+.btn:active:not(:disabled){transform:scale(.98)}
+.btn.ghost{background:transparent;border:0;box-shadow:0 0 0 1px var(--line)}
+.btn.ghost:hover{background:var(--shell);box-shadow:0 0 0 1px var(--mute)}
+.btn.sm{padding:6px 16px;min-height:36px;gap:8px}
+.btn.lg{padding:15px 30px;font-size:17px}
+.ar{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:color-mix(in srgb,var(--blue-ink) 16%,transparent);line-height:1;transition:transform .6s var(--spring)}
+.btn.ghost .ar{background:var(--shell)}
+.btn.sm .ar{width:24px;height:24px;font-size:13px}
+.btn:has(>.ar.r){padding-right:8px}.btn:has(>.ar.l){padding-left:8px}
+.btn.sm:has(>.ar.r){padding-right:6px}.btn.sm:has(>.ar.l){padding-left:6px}
+.btn:hover:not(:disabled) .ar.r{transform:translate(3px,-1px) scale(1.05)}
+.btn:hover:not(:disabled) .ar.l{transform:translate(-3px,-1px) scale(1.05)}
+
+/* formuláře: hranice polí nechávám kontrastní, aby šly najít (WCAG 3:1) */
+input[type=text],input[type=email],input[type=number],input[type=date],select,textarea{background:var(--paper);border:1px solid var(--field);border-radius:14px;padding:12px 14px;box-shadow:0 0 0 4px var(--shell);transition:border-color .4s var(--spring),box-shadow .4s var(--spring)}
+td input[type=text],td input[type=date],td select,td textarea,.tdate,.tnote,.team input[type=text]{box-shadow:none;border-radius:10px;padding:7px 10px}
+input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px var(--blue-soft)}
+label.f{font-weight:500;margin-bottom:9px}
+.opts label{transition:background-color .4s var(--spring),border-color .4s var(--spring)}
+th{font:500 11px var(--f-b);letter-spacing:.14em}
+.team{transition:background-color .4s var(--spring),border-color .4s var(--spring)}
+.mk{transition:border-color .4s var(--spring)}
+
+/* editorial split: nejdřív slova, rozcestník vedle */
+.hero{grid-template-columns:minmax(0,1.25fr) minmax(0,440px);gap:clamp(32px,6vw,88px);align-items:start;padding-block:clamp(8px,3vw,40px) 56px}
+.hero>:first-child{order:2;position:sticky;top:104px}
+@media (max-width:860px){.hero{grid-template-columns:1fr;gap:40px}.hero>:first-child{position:static}.signpost{max-width:380px;margin:0 auto}}
+
+/* lišta kapitoly a stránkování */
+.chbar{border-bottom:0;box-shadow:0 1px 0 var(--line);padding-bottom:16px;margin-bottom:40px}
+.pager{bottom:14px;margin-top:44px;padding:8px;border-top:0;border-radius:999px;background:var(--glass);-webkit-backdrop-filter:blur(18px) saturate(1.3);backdrop-filter:blur(18px) saturate(1.3);box-shadow:0 0 0 1px var(--ring),0 18px 40px -24px var(--ambient),inset 0 1px 0 var(--edge)}
+.foot{margin-top:72px;padding-top:20px}
+#toast{border-radius:999px;padding:10px 20px 10px 10px;transition:opacity .5s var(--spring),transform .5s var(--spring)}
+.tip::after{border-radius:14px;display:none}
+.tip:hover::after,.tip:focus::after{display:block}
+@media (max-width:640px){.tip:hover::after,.tip:focus::after{position:fixed;left:16px;right:16px;top:auto;bottom:96px;width:auto;max-width:none}}
+.prog,.track{border-radius:999px;overflow:hidden}.track{overflow:visible}.track i,.prog i{border-radius:999px}
+
+/* přednáška */
+.dk-slide{border-radius:32px}
+.dk-quote{font-weight:500}
+
+/* pohyb: jen při změně obrazovky, ne při každém překreslení. Kvůli reduced-motion přidává třídy JS. */
+.rv{opacity:0;transform:translateY(28px)}
+.rv.in{opacity:1;transform:none;transition:opacity .7s var(--spring),transform .7s var(--spring);transition-delay:var(--d,0ms)}
+.fill .track i,.fill .prog i{transform-origin:left;animation:fill 1.1s var(--spring) both}
+@keyframes fill{from{transform:scaleX(0)}}
+@keyframes grow{from{transform:scale(.94);opacity:.6}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:no-preference){.treesvg{animation:grow .9s var(--spring)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+@media print{.rv{opacity:1!important;transform:none!important}.top,.pager{display:none}}
+
+@media (max-width:640px){
+  html{scroll-padding-top:88px}
+  .top{top:8px;margin-top:8px}
+  .card,.next,.cont,.tile,.dk-slide{border-width:4px;border-radius:24px}
+  .card{padding:20px}.next{padding:20px}
+  .slide>h1,h1{font-size:clamp(38px,11vw,50px)}.intro>h1{font-size:clamp(44px,13vw,58px)}
+  .promise{font-size:24px}
+  .pager{border-radius:30px;bottom:8px;grid-template-columns:auto minmax(0,1fr)}
+  .pinfo:empty{display:none}
+  .pager .btn{width:auto;padding:8px 14px;line-height:1.2;white-space:normal;text-align:left;font-size:14px}
+  .pager .btn:has(>.ar.r){padding-right:6px;justify-content:space-between}
+  .pager .btn:has(>.ar.l){padding-left:6px}
+  .demo-bar{border-radius:18px}
+}
+/* kroky: výrazné dlaždice s číslem v kolečku, název velkým písmem, aktivní krok plně vybarvený */
+.stepstrip{gap:12px;margin:22px 0 34px}
+.stepbox{position:relative;gap:6px;padding:18px 18px 20px;border-radius:22px;font-size:16px;line-height:1.35;background:var(--paper);box-shadow:0 0 0 1px var(--ring),0 18px 36px -26px var(--ambient)}
+.stepbox b{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;margin-bottom:8px;background:var(--blue-soft);color:var(--blue);font:600 24px/1 var(--f-d)}
+.stepbox span{font:600 26px/1.05 var(--f-d);color:var(--ink)}
+.stepbox small{font-size:15px;line-height:1.4;color:var(--mute)}
+.stepbox.on{background:var(--blue);border-color:var(--blue);box-shadow:0 18px 36px -20px var(--blue)}
+.stepbox.on b{background:var(--blue-ink);color:var(--blue)}
+.stepbox.on span,.stepbox.on small{color:var(--blue-ink)}
+@media (max-width:960px){.stepstrip{grid-template-columns:repeat(2,minmax(0,1fr))}.stepbox:last-child{grid-column:1/-1}}
+@media (max-width:640px){.stepstrip{gap:8px}.stepbox{padding:14px 14px 16px;border-radius:18px}.stepbox b{width:34px;height:34px;font-size:20px}.stepbox span{font-size:23px}.stepbox small{display:block;font-size:14px}}
 </style>
 
 <div class="wrap" lang="cs">
   <header class="top">
     <div class="brand"><span id="logo"></span><div><b>Průvodce</b><small>Zavádění AI ve firmě snadno a transparentně</small></div></div>
+    <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
+    <div class="menu" id="menu">
     <div class="mid"><span id="demolbl">Ukázka · přepnout roli</span><div class="seg" id="roles" role="group" aria-label="Ukázka: přepnout roli"></div></div>
     <div class="right">
       <button class="theme" id="planbtn" type="button" data-act="planview"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Plán</button><button class="theme icon" id="theme" type="button"></button>
       <span class="userchip" id="userchip"></span>
+    </div>
     </div>
   </header>
   <nav id="nav" aria-label="Sekce"></nav>
@@ -370,7 +537,7 @@ var HELP=['Krátké školení','Příklady z mé práce','Jasná pravidla pro da
 var ROLES=[['owner','Vedení'],['amb','Ambasador'],['emp','Zaměstnanec']];
 var CHALL=['Nech AI shrnout dlouhý e-mail a zkontroluj, co vynechala.','Požádej AI o tři varianty odpovědi zákazníkovi a vyber nejlepší.','Nech AI převést poznámky z porady na úkoly.','Zeptej se AI na chybu v tabulce a odpověď si ověř sám.','Najdi jednu věc, kterou AI zvládla špatně, a nahlas ji v portálu.','Nauč kolegu jeden prompt, který ti ušetřil čas.'];
 var TOOLCAT=[['ChatGPT','Univerzální, psaní a analýza. Firemní tarify mají jiné nastavení dat než free verze.','https://chatgpt.com'],['Microsoft Copilot','Firmy s Microsoft 365 (Outlook, Word, Teams).','https://copilot.microsoft.com'],['Claude','Dlouhé dokumenty, psaní a rozbor textu.','https://claude.ai'],['Gemini','Firmy s Google Workspace.','https://gemini.google.com']];
-var SOURCES=[['Český barometr obav z AI 2026','https://asociace.ai/cesky-barometr-obav-z-ai-2026/','Čeho se Češi v souvislosti s AI obávají.'],['EU AI Act, článek 4 (AI gramotnost)','https://artificialintelligenceact.eu/article/4/','Povinnost firem zajistit, aby zaměstnanci AI rozuměli.'],['Model změny ADKAR (Prosci)','https://www.prosci.com/methodology/adkar','Model, ze kterého trasa vychází.']];
+var SOURCES=[['Český barometr obav z AI 2026','https://asociace.ai/cesky-barometr-obav-z-ai-2026/','Čeho se Češi v souvislosti s AI obávají.'],['EU AI Act, článek 4 (AI gramotnost)','https://artificialintelligenceact.eu/article/4/','Povinnost firem zajistit, aby zaměstnanci AI rozuměli.']];
 var RULES=['Používejte firemní účet, ne soukromý.','Nevkládejte osobní údaje zákazníků ani kolegů.','Nevkládejte smlouvy, hesla a interní čísla, pokud to firemní nástroj výslovně nepovoluje.','Výstup AI vždy zkontrolujte jako práci kolegy.','Když text od AI jde zákazníkovi, přečtěte ho celý a upravte.','Nejste si jistí? Zeptejte se ambasadora.'];
 var MISSION=[['1. týden','Přečti si, jak chce vedení k AI přistoupit, a pravidla pro práci s AI','Obojí najdeš v Podkladech.','a_kit','Otevřít podklady'],['2. týden','Vyzkoušej jeden nástroj na skutečném úkolu týmu','Třeba shrnutí dlouhého e-mailu nebo zápis z porady.'],['3. týden','Zapiš první use case a vyzkoušej ho s kolegy','Use case je konkrétní úkol, se kterým AI týmu pomáhá.','a_cases','Otevřít use casy'],['3.–4. týden','Projdi nápady kolegů a vyber jeden k vyzkoušení','Co vybereš, se jedním klikem změní na use case.','a_ideas','Otevřít nápady'],['4. týden','Ukaž kolegům jeden ověřený postup','Stačí 10 minut na poradě.'],['Průběžně','Odpovídej kolegům na otázky','Kolegové z tvého týmu se ptají anonymně v portálu pro zaměstnance.','a_q','Otevřít otázky'],['Na konci','Dej vedení vědět, jak to dopadlo','Pár vět: co šlo, co lidi trápí, co by pomohlo.']];
 var ICON={
@@ -391,19 +558,19 @@ var ICON={
  q:'<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>',
  drop:'<polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/>'};
 var STAGES=[
- {n:'Povědomí',when:'2. týden',who:'Vedení',g:'Všichni vědí, proč se to děje, co tím chcete docílit a co nikdy neuděláte.',why:'Lidé se nejvíc bojí toho, o čem se nemluví. Když pojmenujete důvod i hranice, strach klesá.',emp:'Vědí, proč AI zavádíte, co se nezmění a jak dopadl průzkum. Znají svého ambasadora a vědí, co s ním budou řešit.',
+ {n:'Proč',when:'2. týden',who:'Vedení',g:'Všichni vědí, proč se to děje, co tím chcete docílit a co nikdy neuděláte.',why:'Lidé se nejvíc bojí toho, o čem se nemluví. Když pojmenujete důvod i hranice, strach klesá.',emp:'Vědí, proč AI zavádíte, co se nezmění a jak dopadl průzkum. Znají svého ambasadora a vědí, co s ním budou řešit.',
   plan:'Vysvětlíte, proč se to děje a co tím chcete docílit. Ukážete výsledky průzkumu, cestu po rozcestníku a co pro lidi bude znamenat ambasador.',share:true,
   tasks:[['t_a1','Napsat, jak chcete k AI přistoupit','Vedení'],['t_a2','Představit úvodní přednášku s výsledky průzkumu','Vedení'],['t_a3','Zveřejnit zaměstnancům shrnutí výsledků','Vedení']]},
- {n:'Motivace',when:'2.–3. týden',who:'Ambasadoři s podporou vedení',g:'Každý tým vidí, co mu AI uleví a co zůstává na lidech.',why:'Změnu lidé přijmou, když vidí, co z ní mají oni, ne jen firma. Kolega z týmu to vysvětlí lépe než e-mail od vedení.',emp:'Vidí, co AI uleví právě jejich týmu, a mohou říct, co chtějí nechat na lidech.',
+ {n:'Pro mě',when:'2.–3. týden',who:'Ambasadoři s podporou vedení',g:'Každý tým vidí, co mu AI uleví a co zůstává na lidech.',why:'Změnu lidé přijmou, když vidí, co z ní mají oni, ne jen firma. Kolega z týmu to vysvětlí lépe než e-mail od vedení.',emp:'Vidí, co AI uleví právě jejich týmu, a mohou říct, co chtějí nechat na lidech.',
   plan:'Ambasadoři mluví s týmy a zjišťují, co by jim AI ulehčila a co chtějí nechat na lidech. Zapisují první nápady na use casy. Vy každému týmu napíšete, kam by se měl s AI posunout.',teamVision:true,goalField:true,
   tasks:[['t_d0','Poděkovat ambasadorům a dát jim podporu (e-mail nebo krátká online schůzka)','Vedení'],['t_d3','Napsat a zveřejnit vizi pro každý tým','Vedení'],['t_d1','Zjistit s týmy, co jim AI ušetří','Ambasadoři'],['t_d2','Zapsat, které úkoly lidé chtějí AI předat a které ne','Ambasadoři']]},
- {n:'Znalosti',when:'3. týden',who:'Ambasadoři, vedení schvaluje',g:'V každém týmu je ambasador a všichni znají nástroje i pravidla.',why:'Lidé AI nepoužívají, když nevědí, co smí. Jasná pravidla a kolega, který poradí, odstraní největší nejistotu.',emp:'Vědí, které nástroje smí používat, co do nich nevkládat a koho se zeptat.',
+ {n:'Jak',when:'3. týden',who:'Ambasadoři, vedení schvaluje',g:'V každém týmu je ambasador a všichni znají nástroje i pravidla.',why:'Lidé AI nepoužívají, když nevědí, co smí. Jasná pravidla a kolega, který poradí, odstraní největší nejistotu.',emp:'Vědí, které nástroje smí používat, co do nich nevkládat a koho se zeptat.',
   plan:'Vy vyberete nástroje a schválíte pravidla pro práci s AI. Ambasadoři je předají týmům a odpovídají na otázky.',kind:'ambassador',ai:'Připravit pozvánku a misi pro ambasadory',
   tasks:[['t_k1','Mít ambasadora v každém týmu','Vedení'],['t_k2','Vybrat nástroje a schválit pravidla pro práci s AI','Vedení'],['t_k3','Uspořádat první setkání ambasadorů','Vedení a ambasadoři']],rulesLink:true},
- {n:'Schopnosti',when:'4.–5. týden',who:'Ambasadoři a týmy',g:'Týmy si vyzkoušely konkrétní use casy a zapsaly ověřené postupy.',why:'Jistota přichází z vlastní zkušenosti. Malé ověřené postupy jsou víc než velké školení.',emp:'Mají ověřené postupy z vlastní práce a vědí, kde je najdou.',
+ {n:'V praxi',when:'4.–5. týden',who:'Ambasadoři a týmy',g:'Týmy si vyzkoušely konkrétní use casy a zapsaly ověřené postupy.',why:'Jistota přichází z vlastní zkušenosti. Malé ověřené postupy jsou víc než velké školení.',emp:'Mají ověřené postupy z vlastní práce a vědí, kde je najdou.',
   plan:'Týmy si vyzkouší konkrétní use casy. Ambasadoři je zapisují a co funguje, uvidí všichni v sekci Co u nás funguje.',kind:'usecase',ai:'Navrhnout use casy s nízkým rizikem',
   tasks:[['t_b1','Mít aspoň 3 use casy ve zkoušce','Ambasadoři'],['t_b2','Vyzkoušet use case v týmu 2 týdny','Týmy'],['t_b5','Ambasadoři vybrali aspoň 1 nápad od kolegů k vyzkoušení','Ambasadoři'],['t_b3','Polovina společného cíle','Ambasadoři'],['t_b4','Ambasadoři představí vedení, co se osvědčilo (krátká prezentace)','Ambasadoři a vedení']]},
- {n:'Udržení',when:'6. týden a dál',who:'Vedení',g:'Změna drží díky pravidelné komunikaci a měření před a po.',why:'Bez opakování se lidé vrátí ke starému. Měření ukáže, jestli obavy opravdu klesly.',emp:'Pravidelně slyší, jak to jde, a ve druhém kole průzkumu řeknou, co se změnilo.',
+ {n:'Natrvalo',when:'6. týden a dál',who:'Vedení',g:'Změna drží díky pravidelné komunikaci a měření před a po.',why:'Bez opakování se lidé vrátí ke starému. Měření ukáže, jestli obavy opravdu klesly.',emp:'Pravidelně slyší, jak to jde, a ve druhém kole průzkumu řeknou, co se změnilo.',
   plan:'Pravidelně informujete o pokroku a po 6 týdnech zopakujete průzkum. Uvidíte, jestli obavy klesly.',kind:'weekly',ai:'Napsat týdenní zprávu z čísel',
   tasks:[['t_r1','Posílat týdenní zprávu týmům','Vedení'],['t_r2','Zopakovat průzkum po 6 týdnech','Vedení'],['t_r3','Pravidelně se ptát ambasadorů, jak to jde, a pomáhat jim','Vedení'],['t_r4','Ocenit týmy a ambasadory, kteří zkoušejí','Vedení']]}];
 var AUTO={
@@ -437,7 +604,7 @@ var TIP={
  radar:'Každý hrot je jedna obava na škále 0 až 100. Čím je tvar větší, tím jsou obavy vyšší.',
  teams:'Barva a číslo ukazují index obav týmu. Tým s méně než '+MIN+' odpověďmi se nezobrazí, aby se nedaly poznat jednotlivé odpovědi.',
  help:'Podíl odpovídajících, kteří si danou pomoc vybrali. Jeden člověk mohl vybrat víc možností.',
- adkar:'Trasa vychází z modelu změny ADKAR (povědomí, touha, znalosti, schopnosti, upevnění). Tady ho najdete pod srozumitelnějšími názvy.'};
+ kroky:'Trasa má pět kroků od obavy k jistotě: Proč, Pro mě, Jak, V praxi a Natrvalo.'};
 
 function iso(d){return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
 function today(){return iso(new Date())}
@@ -664,7 +831,7 @@ function signpost(){
   CH.forEach(function(c,i){
     var y=96+i*66,R=i%2===0,isCur=i===cur,done=chDone(i);
     var d=R?'M207 '+y+' L372 '+y+' L392 '+(y+23)+' L372 '+(y+46)+' L207 '+(y+46)+'Z':'M193 '+y+' L28 '+y+' L8 '+(y+23)+' L28 '+(y+46)+' L193 '+(y+46)+'Z';
-    var tx=R?226:174,an=R?'start':'end',fg=isCur?'#fff':'var(--ink)',sub=isCur?'rgba(255,255,255,.85)':'var(--mute)';
+    var tx=R?226:174,an=R?'start':'end',fg=isCur?'var(--blue-ink)':'var(--ink)',sub=fg;
     h+='<g class="sign" data-act="slide" data-k="'+chFirst(i)+'" tabindex="0" role="button" aria-label="Kapitola '+(i+1)+': '+esc(c[0])+(done?', hotovo':isCur?', jste tady':'')+'">'+
      '<path d="'+d+'" fill="'+shadow+'" transform="translate(2 3)"/><path class="pl" d="'+d+'" fill="'+(isCur?'var(--blue)':'var(--sign)')+'" stroke="'+(isCur?'var(--blue)':'color-mix(in srgb,var(--wood) 55%,transparent)')+'" stroke-width="1.2"/>'+
      '<circle cx="'+(R?215:185)+'" cy="'+(y+23)+'" r="2.2" fill="'+(isCur?'rgba(255,255,255,.6)':'var(--wood)')+'" opacity=".8"/>'+
@@ -726,8 +893,8 @@ function weekCard(){
 }
 
 /* ---------- tok vedení: kapitoly a obrazovky ---------- */
-var CH=[['Start','','Představíte firmu a vyberete týmy.'],['Aktuální situace','','Anonymní průzkum mezi zaměstnanci a report z jejich odpovědí.'],['Nový způsob práce','','Pět kroků podle modelu změny ADKAR: od informování lidí po ověřené postupy.'],['Měření','','Po 6 týdnech zopakujete průzkum a uvidíte, co se změnilo.']];
-var SLIDES=[['firm',0,'Firma a vize'],['mapexp',0,'Proč mapujeme'],['teams',0,'Týmy'],['surexp',1,'Proč průzkum'],['surq',1,'Otázky'],['sursend',1,'Rozeslání'],['ambsel',1,'Ambasadoři'],['report',1,'Report'],['nwexp',2,'Jak to proběhne'],['s0',2,'Povědomí'],['s1',2,'Motivace'],['s2',2,'Znalosti'],['rules',2,'Pravidla a nástroje'],['s3',2,'Schopnosti'],['s4',2,'Udržení'],['measure',3,'Měření']];
+var CH=[['Start','','Představíte firmu a vyberete týmy.'],['Aktuální situace','','Anonymní průzkum mezi zaměstnanci a report z jejich odpovědí.'],['Nový způsob práce','','Pět kroků od obavy k jistotě: od informování lidí po ověřené postupy.'],['Měření','','Po 6 týdnech zopakujete průzkum a uvidíte, co se změnilo.']];
+var SLIDES=[['firm',0,'Firma a vize'],['mapexp',0,'Proč mapujeme'],['teams',0,'Týmy'],['surexp',1,'Proč průzkum'],['surq',1,'Otázky'],['sursend',1,'Rozeslání'],['ambsel',1,'Ambasadoři'],['report',1,'Report'],['nwexp',2,'Jak to proběhne'],['s0',2,'Proč'],['s1',2,'Pro mě'],['s2',2,'Jak'],['rules',2,'Pravidla a nástroje'],['s3',2,'V praxi'],['s4',2,'Natrvalo'],['measure',3,'Měření']];
 var QG=[['team','Tým',1,'Abychom viděli rozdíly mezi týmy.'],['freq','Jak často používají AI',1,'Z toho se počítá podíl lidí, kteří AI používají.'],['fear','Pět otázek na obavy',1,'Z nich se počítá index obav, hlavní měřítko celé trasy.'],['conf','Jistota při práci s AI',1,'Index jistoty. Má po 6 týdnech růst.'],['tools','Jaké nástroje a kdo je platí',0,'Ukáže, kde už AI je, včetně soukromých účtů.'],['uses','K čemu AI používají',0,'Napoví, kde hledat první use casy.'],['help','Co by lidem pomohlo',0,'Co zařadit do dalších kroků.'],['text','Volná odpověď',0,'Na co jsme se nezeptali.']];
 function qOn(k){return !S.qoff[k]}
 function sIdx(k){for(var i=0;i<SLIDES.length;i++)if(SLIDES[i][0]===k)return i;return -1}
@@ -851,23 +1018,23 @@ function vUcases(){
     list.map(function(c){return '<tr><td><b>'+esc(c.title)+'</b>'+(c.gain?'<div class="small mute">Pomáhá: '+esc(c.gain)+'</div>':'')+'</td><td>'+esc(tname(c.team))+'</td><td>'+esc(c.by||'ambasador')+'</td><td><span class="pill '+STATUS[c.status][1]+'">'+STATUS[c.status][0]+'</span></td><td class="nowrap">'+(c.created?fshort(c.created):'—')+'</td><td class="nowrap">'+(c.changed?fshort(c.changed):'—')+'</td></tr>'}).join('')+'</tbody></table></div>':'<p class="mute">Zatím žádné use casy. Zapisují je ambasadoři ve svém pohledu.</p>')+'</section>';
 }
 
-/* ---------- metodika ADKAR ---------- */
-var ADK=[['A','Awareness','Povědomí','vím, proč se to děje'],['D','Desire','Motivace','chci se zapojit'],['K','Knowledge','Znalosti','vím, jak na to'],['A','Ability','Schopnosti','umím to v praxi'],['R','Reinforcement','Udržení','vydržím u toho']];
-function adkarStrip(cur){
-  return '<div class="adkar">'+ADK.map(function(a,i){return '<div class="adk'+(i===cur?' on':'')+'"><b>'+a[0]+'</b><span>'+esc(a[2])+'</span><small>'+esc(a[3])+'</small></div>'}).join('')+'</div>';
+/* ---------- 5 kroků od obavy k jistotě ---------- */
+var STEP5=[['1','Proč','Vím, proč to děláme a co se nezmění.'],['2','Pro mě','Vím, co z toho budu mít já.'],['3','Jak','Vím, co smím a koho se zeptat.'],['4','V praxi','Vyzkoušel/a jsem to na své práci.'],['5','Natrvalo','Je to běžná součást práce.']];
+function stepsStrip(cur){
+  return '<div class="stepstrip">'+STEP5.map(function(a,i){return '<div class="stepbox'+(i===cur?' on':'')+'"><b>'+a[0]+'</b><span>'+esc(a[1])+'</span><small>'+esc(a[2])+'</small></div>'}).join('')+'</div>';
 }
 function vIntro(){
   return '<div class="hero"><div>'+signpost()+'</div><section class="intro"><h1>Zaveďte AI tak, aby se jí vaši kolegové nebáli</h1>'+
    '<ol class="chlist">'+CH.map(function(c,i){return '<li><span class="cn">'+(i+1)+'</span><div><b>'+esc(c[0])+'</b><div class="mute">'+esc(c[2])+'</div></div></li>'}).join('')+'</ol>'+
    '<p class="together">Aby obavy opravdu zmizely, zapojíme všechny: vedení i zaměstnance. Čím víc informací lidé dostanou a čím otevřeněji se o AI mluví, tím snáz ji přijmou.</p>'+
-   '<div class="row" style="margin-top:18px"><button class="btn lg" data-act="slide" data-k="'+(S.started?recommend():'firm')+'">'+(S.started?'Pokračovat':'Začít')+' <span aria-hidden="true">→</span></button>'+(S.started?'<button class="btn ghost" data-act="hub">Na rozcestník</button>':'<button class="btn ghost" data-act="demo">Prohlédnout ukázkovou firmu</button>')+'</div></section></div>';
+   '<div class="row" style="margin-top:18px"><button class="btn lg" data-act="slide" data-k="'+(S.started?recommend():'firm')+'">'+(S.started?'Pokračovat':'Začít')+' <span class="ar r" aria-hidden="true">→</span></button>'+(S.started?'<button class="btn ghost" data-act="hub">Na rozcestník</button>':'<button class="btn ghost" data-act="demo">Prohlédnout ukázkovou firmu</button>')+'</div></section></div>';
 }
 function vHub(){
   var r=recommend(),ri=sIdx(r),c=chCur(),open=S.qs.filter(function(q){return !q.a}).length,mg=S.user&&S.user.mgr?team(S.user.mgr):null,notes=Object.keys(S.ambNotes||{});
   var topI=S.ideas.filter(function(i){return i.status!=='rej'}).slice().sort(byVotes).slice(0,3),en=S.errors.length,nextM=BADGES.filter(function(b){return !S.earned[b[0]]})[0];
   return '<div class="hero"><div>'+signpost()+'</div><section class="intro"><div class="eyebrow">Rozcestník</div><h1>'+esc(S.firm||'Vaše firma')+'</h1>'+
    '<p class="lead">'+(c<0?'Celou trasu máte za sebou. Teď jde o to, aby změna vydržela.':'Jste v kapitole '+(c+1)+': '+esc(CH[c][0])+'.')+(mg?' Váš tým: '+esc(mg.name)+'.':'')+'</p>'+
-   '<div class="cont"><div class="eyebrow">Doporučujeme pokračovat</div><b>'+esc(SLIDES[ri][2])+'</b><div class="small mute">Kapitola '+(SLIDES[ri][1]+1)+' · '+esc(CH[SLIDES[ri][1]][0])+'</div><button class="btn" data-act="slide" data-k="'+r+'">Pokračovat <span aria-hidden="true">→</span></button></div>'+
+   '<div class="cont"><div class="eyebrow">Doporučujeme pokračovat</div><b>'+esc(SLIDES[ri][2])+'</b><div class="small mute">Kapitola '+(SLIDES[ri][1]+1)+' · '+esc(CH[SLIDES[ri][1]][0])+'</div><button class="btn" data-act="slide" data-k="'+r+'">Pokračovat <span class="ar r" aria-hidden="true">→</span></button></div>'+
    '<div class="row" style="margin-top:16px;gap:8px"><button class="btn ghost sm" data-act="go" data-v="ucases">Use casy týmů ('+S.cases.length+')</button><button class="btn ghost sm" data-act="intro">Jak průvodce funguje</button></div></section></div>'+
    '<div class="stack" style="margin-top:8px">'+companyTree()+
    '<div class="grid"><section class="card white"><h2 style="margin:0 0 8px">Milníky: '+milesDone()+' z '+BADGES.length+'</h2><div class="prog"><i style="width:'+pct(milesDone(),BADGES.length)+'%"></i></div><p class="small mute" style="margin:10px 0">'+(nextM?'Další na řadě: '+esc(nextM[1])+(nextM[4]?' (teď '+nextM[4]().join(' z ')+').':'. '+esc(badgeText(nextM))+'.'):'Všechny milníky máte za sebou.')+'</p><button class="linkbtn" data-act="go" data-v="wins">Zobrazit milníky</button></section>'+
@@ -880,14 +1047,14 @@ function vHub(){
 /* ---------- O projektu (pro porotu) ---------- */
 function vAbout(){
   var li=function(a){return '<ul class="ticks">'+a.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>'};
-  return '<div class="chbar"><button class="btn ghost sm" data-act="aboutclose"><span aria-hidden="true">←</span> Zpět</button><div class="chinfo"><b>O projektu</b></div><span></span></div><section class="slide">'+head('O projektu','Co je Průvodce AI?','Průvodce pomáhá firmám zavést AI s lidmi, ne proti nim.')+
+  return '<div class="chbar"><button class="btn ghost sm" data-act="aboutclose"><span class="ar l" aria-hidden="true">←</span> Zpět</button><div class="chinfo"><b>O projektu</b></div><span></span></div><section class="slide">'+head('O projektu','Co je Průvodce AI?','Průvodce pomáhá firmám zavést AI s lidmi, ne proti nim.')+
    '<section class="plain"><h2>Problém</h2><p>Lidé se bojí, co AI udělá s jejich prací. Ve firmách AI přichází živelně: každý zkouší sám, na soukromém účtu, bez pravidel. Kdo se bojí, mlčí. Vedení neví, jak na to.</p></section>'+
    '<section class="plain"><h2>Pro koho</h2><p>Pro vedení a manažery malých a středních firem (zhruba 50–250 lidí) a jejich zaměstnance.</p></section>'+
    '<section class="plain"><h2>Co to je</h2><p>Průvodce zaváděním AI na 6 týdnů. Nejdřív anonymně zjistí, čeho se lidé bojí. Pak v každém týmu vybere ambasadora a s lidmi hledá, kde AI pomůže a co zůstane na lidech. Na konci změří, jestli obavy klesly.</p></section>'+
    '<section class="plain"><h2>Jak využívá AI</h2><p>Pomáhá vedení sepsat cíl a vizi pro týmy, z výsledků průzkumu navrhne doporučení, navrhne bezpečné use casy pro tým a odpoví zaměstnanci na otázku hned.</p></section>'+
    '<section class="plain"><h2>Kde má AI hranice</h2>'+li(['AI jen navrhuje, rozhoduje vždy člověk.','Každý výstup AI je v portálu označený „Návrh AI, zkontrolujte“.','AI nevidí jednotlivé odpovědi, jen souhrny za tým od '+MIN+' lidí.','Chyby AI portál sbírá a sdílí jako ponaučení (Lovci chyb).',sampleFn?'V této verzi odpovídá skutečný model AI. Když není dostupný, zobrazí se šablona.':'V tomto prototypu jsou odpovědi AI simulované.'])+'</section>'+
    '<section class="plain"><h2>Jak měříme přínos</h2>'+li(['Stejný dotazník před a po 6 týdnech.','Index obav (má klesnout), index jistoty (má vzrůst), podíl lidí, kteří AI používají.','Počet postupů, které fungují, a nápadů od zaměstnanců.','Nesledujeme jednotlivce.'])+'</section>'+
-   '<section class="plain"><h2>Na čem stojí</h2><ul class="ticks">'+SOURCES.map(function(s){return '<li><a href="'+s[1]+'" target="_blank" rel="noopener">'+esc(s[0])+'</a></li>'}).join('')+'</ul></section></section>';
+   '<section class="plain"><h2>Na čem stojí</h2><ul class="ticks"><li>Vlastní model 5 kroků od obavy k jistotě, inspirovaný obecnými principy řízení změny</li>'+SOURCES.map(function(s){return '<li><a href="'+s[1]+'" target="_blank" rel="noopener">'+esc(s[0])+'</a></li>'}).join('')+'</ul></section></section>';
 }
 
 /* ---------- obrazovky: Výchozí bod ---------- */
@@ -987,9 +1154,9 @@ function stageTasks(i){return STAGES[i].tasks.map(function(t){return t[0]==='t_b
 function stageProg(i){var t=stageTasks(i);return pct(t.filter(function(x){return isDone(x[0])}).length,t.length)}
 function slNwexp(){
   return '<section class="slide">'+head('Nový způsob práce','Připravte se na nový způsob práce','Pět kroků, každý s jasným cílem. Vy i zaměstnanci víte, co vás čeká a kdo co dělá.')+
-   stepList(STAGES.map(function(s,i){return [s.n,s.plan,'ADKAR '+ADK[i][0]+' · '+s.when+' · '+s.who]}))+
-   '<section class="plain"><h2>Na čem průvodce stojí</h2><p>Postup vychází z modelu řízení změny <b>ADKAR</b> od společnosti Prosci. Změna se podle něj ujme, když lidé postupně projdou pěti fázemi. Každé fázi odpovídá jeden krok průvodce.</p>'+adkarStrip(-1)+
-   '<p class="small mute" style="margin-top:10px">Více o modelu: <a href="https://www.prosci.com/methodology/adkar" target="_blank" rel="noopener">prosci.com</a></p></section></section>';
+   stepList(STAGES.map(function(s,i){return [s.n,s.plan,s.when+' · '+s.who]}))+
+   '<section class="plain"><h2>5 kroků od obavy k jistotě</h2><p>Změna se ujme, když lidé projdou pěti kroky. Nejdřív pochopí proč, pak uvidí, co z toho mají oni, naučí se jak, vyzkoušejí to v praxi a nakonec si to osvojí natrvalo. Každý krok průvodce odpovídá jednomu z nich.</p>'+stepsStrip(-1)+
+   '</section></section>';
 }
 function fshort(d){var x=new Date(d+'T12:00:00');return x.getDate()+'. '+(x.getMonth()+1)+'.'}
 function taskDate(id){return S.taskDate[id]||(isDone(id)&&S.doneAt[id])||''}
@@ -1044,7 +1211,7 @@ async function aiTeamVision(id){
 function tvCard(id,emp){var t=team(id);if(!t||!S.tvPub[id]||!tvText(id))return '';return '<section class="card white"><div class="eyebrow">'+(emp?'Kam se chce posunout váš tým':'Vize pro tým '+esc(t.name))+'</div><p class="promise" style="font-size:19px">'+esc(tvText(id))+'</p></section>'}
 function slStage(i){
   var s=STAGES[i],ts=stageTasks(i),cn=(S.ctasks[i]||[]).length;
-  return '<section class="slide wide">'+head('Nový způsob práce · krok '+(i+1)+' z 5 · ADKAR '+ADK[i][0]+' ('+ADK[i][1]+')',s.n,s.g)+adkarStrip(i)+
+  return '<section class="slide wide">'+head('Nový způsob práce · krok '+(i+1)+' z 5 · '+s.n,s.n,s.g)+stepsStrip(i)+
    '<dl class="facts"><div><dt>Kdo to dělá:</dt><dd>'+esc(s.who)+'</dd></div><div><dt>Proč:</dt><dd>'+esc(s.why)+'</dd></div><div><dt>Co si zaměstnanci odnesou:</dt><dd>'+esc(s.emp)+'</dd></div></dl>'+
    '<div class="row" style="justify-content:space-between;margin:30px 0 8px"><h2 style="margin:0">Úkoly</h2><span class="small mute">'+stageProg(i)+' % hotovo</span></div>'+
    '<div class="scroll"><table class="ttable"><thead><tr><th style="width:44px">Hotovo</th><th>Úkol</th><th>Kdo</th><th>Kdy</th><th>Poznámka</th></tr></thead><tbody>'+
@@ -1105,17 +1272,17 @@ function shareBuilder(){
    '<div class="grid" style="margin-top:6px"><div><div class="clist">'+SHARE.map(function(x){return '<label class="citem"><input type="checkbox"'+(x[2]?' checked disabled':' data-act="shtog" data-k="'+x[0]+'"'+(shOn(x[0])?' checked':''))+'><span><b>'+esc(x[1])+'</b>'+(x[2]?'<span class="req">'+svgI('lock')+'povinné</span>':'')+'</span></label>'}).join('')+'</div>'+
    '<p class="small mute" style="margin-top:12px">Výsledky za jednotlivé týmy nesdílíme, aby se týmy mezi sebou neporovnávaly.</p></div>'+
    '<div><label class="f" for="ownmsg">Vlastní sdělení vedení</label><textarea id="ownmsg" data-bind="ownMsg" placeholder="Např. Děkujeme, že jste odpověděli.">'+esc(S.ownMsg)+'</textarea>'+
-   '<div class="stack" style="margin-top:14px"><button class="btn" data-act="deck">Otevřít přednášku <span aria-hidden="true">→</span></button>'+
+   '<div class="stack" style="margin-top:14px"><button class="btn" data-act="deck">Otevřít přednášku <span class="ar r" aria-hidden="true">→</span></button>'+
    (S.shared?'<p class="small" style="margin:0">Shrnutí je zveřejněné v portálu pro zaměstnance, na obrazovce Výsledky průzkumu. Změny výběru se projeví hned. <button class="linkbtn" data-act="unpublish">Skrýt</button></p>':'<button class="btn ghost" data-act="publish">Zveřejnit v portálu pro zaměstnance</button>')+'</div></div></div></section>';
 }
 function vDeck(){
   var sl=deckSlides(true),i=Math.max(0,Math.min(S.deckI,sl.length-1)),d=sl[i];
-  return '<div class="chbar"><button class="btn ghost sm" data-act="slide" data-k="s0"><span aria-hidden="true">←</span> Zpět do průvodce</button><div class="chinfo"><span class="eyebrow">Přednáška pro zaměstnance</span><b>'+esc(S.firm||'Vaše firma')+'</b></div><span class="small mute">'+(i+1)+' / '+sl.length+'</span></div>'+
+  return '<div class="chbar"><button class="btn ghost sm" data-act="slide" data-k="s0"><span class="ar l" aria-hidden="true">←</span> Zpět do průvodce</button><div class="chinfo"><span class="eyebrow">Přednáška pro zaměstnance</span><b>'+esc(S.firm||'Vaše firma')+'</b></div><span class="small mute">'+(i+1)+' / '+sl.length+'</span></div>'+
    '<div class="deck"><article class="dk-slide" aria-live="polite">'+(d.sub?'<div class="eyebrow">'+esc(d.sub)+'</div>':'')+'<h2 class="dk-t">'+esc(d.t)+'</h2><div class="dk-b">'+d.b+'</div><div class="dk-foot"><span>'+esc(S.firm||'')+'</span><span>'+(i+1)+' / '+sl.length+'</span></div></article></div>'+
-   '<div class="dk-ctrl"><button class="btn ghost" data-act="dkprev"'+(i===0?' disabled':'')+'><span aria-hidden="true">←</span> Předchozí</button><div class="pdots">'+sl.map(function(x,j){return '<i class="'+(j<i?'done':j===i?'on':'')+'"></i>'}).join('')+'</div><button class="btn" data-act="dknext"'+(i===sl.length-1?' disabled':'')+'>Další <span aria-hidden="true">→</span></button></div>'+
+   '<div class="dk-ctrl"><button class="btn ghost" data-act="dkprev"'+(i===0?' disabled':'')+'><span class="ar l" aria-hidden="true">←</span> Předchozí</button><div class="pdots">'+sl.map(function(x,j){return '<i class="'+(j<i?'done':j===i?'on':'')+'"></i>'}).join('')+'</div><button class="btn" data-act="dknext"'+(i===sl.length-1?' disabled':'')+'>Další <span class="ar r" aria-hidden="true">→</span></button></div>'+
    '<div class="row" style="justify-content:center;margin-top:10px"><button class="linkbtn" data-act="notes">'+(S.notes?'Skrýt poznámky pro mluvčího':'Zobrazit poznámky pro mluvčího')+'</button></div>'+
    (S.notes?'<div class="note" style="max-width:820px;margin:12px auto 0"><b>Poznámka:</b> '+esc(d.n)+'</div>':'')+
-   '<p class="small mute" style="text-align:center;margin-top:14px">Šipky na klávesnici přepínají slidy. Obsah upravíte výběrem v kroku Povědomí.</p>';
+   '<p class="small mute" style="text-align:center;margin-top:14px">Šipky na klávesnici přepínají slidy. Obsah upravíte výběrem v kroku Proč.</p>';
 }
 function shareText(){
   var tmp=document.createElement('div');
@@ -1155,7 +1322,7 @@ function aHub(){
   var tile=function(k,title,val,sub){return '<button class="tile" data-act="aslide" data-k="'+k+'"><span class="eyebrow">'+esc(title)+'</span><b>'+val+'</b><span class="small mute">'+esc(sub)+'</span></button>'};
   var nx=open?['a_q','Kolegové čekají na odpověď. Stačí krátce, a když nevíš, napiš, že to zjistíš.']:ni?['a_ideas','Kolegové poslali nápady. Vyber jeden, který vyzkoušíte.']:!cs.length?['a_cases','Zapiš první use case. Stačí jedna věc, se kterou AI týmu pomáhá.']:done<MISSION.length?['a_mission','Pokračuj v misi: '+MISSION.filter(function(x,i){return !m[i]})[0][1].toLowerCase()+'.']:['a_cases','Mise je splněná. Ukazuj kolegům postupy, které fungují, a sbírej jejich zkušenosti.'];
   return '<section class="slide wide">'+head('Ambasador','Tvůj tým: '+(S.ambTeam==='__other'?(S.ambOther||'jiný tým'):t?t.name:'nevybrán'),'Každý postup, který funguje, pomůže společnému stromu firmy. Vrátit se sem můžeš kdykoli.')+tvCard(ambKey())+weekCard()+
-   '<div class="cont" style="margin-bottom:20px"><div class="eyebrow">Doporučujeme</div><b>'+esc(AMB_SLIDES[aIdx(nx[0])][1])+'</b><div class="small mute">'+esc(nx[1])+'</div><button class="btn" data-act="aslide" data-k="'+nx[0]+'">Pokračovat <span aria-hidden="true">→</span></button></div>'+
+   '<div class="cont" style="margin-bottom:20px"><div class="eyebrow">Doporučujeme</div><b>'+esc(AMB_SLIDES[aIdx(nx[0])][1])+'</b><div class="small mute">'+esc(nx[1])+'</div><button class="btn" data-act="aslide" data-k="'+nx[0]+'">Pokračovat <span class="ar r" aria-hidden="true">→</span></button></div>'+
    '<div class="tiles">'+tile('a_mission','Mise na 4 týdny',done+' / '+MISSION.length,'splněných úkolů')+tile('a_q','Otázky od kolegů',open,nplural(open,'otázka čeká','otázky čekají','otázek čeká')+' na odpověď')+tile('a_ideas','Nápady',ni+' '+nplural(ni,'nový','nové','nových'),'od kolegů z týmu')+tile('a_cases','Use casy',cs.length,ok+' '+nplural(ok,'postup funguje','postupy fungují','postupů funguje'))+tile('a_kit','Podklady','Otevřít','pravidla, nástroje a nápady')+'</div>'+
    '<div class="stack" style="margin-top:20px">'+companyTree()+meetBlock('amb')+'</div>'+
    '<p style="margin-top:4px"><button class="linkbtn" data-act="aslide" data-k="a_hi">Projít znovu úvod</button> · <button class="linkbtn" data-act="aslide" data-k="a_team">Změnit tým</button></p></section>';
@@ -1213,13 +1380,13 @@ function aKit(){
 var ASL={a_hi:aHi,a_team:aTeam,a_mission:aMission,a_q:aQ,a_ideas:aIdeas,a_cases:aCases,a_kit:aKit};
 function aChbar(k){
   var i=aIdx(k),g=AMB_SLIDES[i][2],inG=AMB_SLIDES.filter(function(s){return s[2]===g}),pos=inG.map(function(s){return s[0]}).indexOf(k);
-  return '<div class="chbar"><button class="btn ghost sm" data-act="ahub"'+(S.aOnboarded?'':' disabled')+'><span aria-hidden="true">←</span> Přehled</button><div class="chinfo"><span class="eyebrow">'+esc(AMB_GROUP[g])+'</span><b>'+esc(AMB_SLIDES[i][1])+'</b></div>'+crumbs(inG.map(function(s){return [s[0],s[1]]}),pos,'aslide')+'</div>';
+  return '<div class="chbar"><button class="btn ghost sm" data-act="ahub"'+(S.aOnboarded?'':' disabled')+'><span class="ar l" aria-hidden="true">←</span> Přehled</button><div class="chinfo"><span class="eyebrow">'+esc(AMB_GROUP[g])+'</span><b>'+esc(AMB_SLIDES[i][1])+'</b></div>'+crumbs(inG.map(function(s){return [s[0],s[1]]}),pos,'aslide')+'</div>';
 }
 function aPager(k){
   var i=aIdx(k),prev=AMB_SLIDES[i-1],next=AMB_SLIDES[i+1],dis=k==='a_team'&&!ambTeamOk();
-  return '<nav class="pager" aria-label="Postup">'+(prev?'<button class="btn ghost" data-act="aslide" data-k="'+prev[0]+'"><span aria-hidden="true">←</span> '+esc(prev[1])+'</button>':'<span></span>')+
+  return '<nav class="pager" aria-label="Postup">'+(prev?'<button class="btn ghost" data-act="aslide" data-k="'+prev[0]+'"><span class="ar l" aria-hidden="true">←</span> '+esc(prev[1])+'</button>':'<span></span>')+
    '<div class="pinfo">'+(dis?'<span class="phint">Vyber svůj tým.</span>':'')+'</div>'+
-   (next?'<button class="btn" data-act="aslide" data-k="'+next[0]+'"'+(dis?' disabled':'')+'>Dál: '+esc(next[1])+' <span aria-hidden="true">→</span></button>':'<button class="btn" data-act="ahub">Na přehled <span aria-hidden="true">→</span></button>')+'</nav>';
+   (next?'<button class="btn" data-act="aslide" data-k="'+next[0]+'"'+(dis?' disabled':'')+'>Dál: '+esc(next[1])+' <span class="ar r" aria-hidden="true">→</span></button>':'<button class="btn" data-act="ahub">Na přehled <span class="ar r" aria-hidden="true">→</span></button>')+'</nav>';
 }
 function vAmb(){
   if(!active().length)return '<section class="slide"><p>Vedení zatím nenastavilo týmy.</p></section>';
@@ -1246,7 +1413,7 @@ function eHub(){
   var tile=function(k,title,val,sub){return '<button class="tile" data-act="eslide" data-k="'+k+'"><span class="eyebrow">'+esc(title)+'</span><b>'+val+'</b><span class="small mute">'+esc(sub)+'</span></button>'};
   var nx=!S.submitted?['e_survey','Vyplňte anonymní dotazník. Zabere 3 minuty a pomůže vedení pochopit, co vám vadí a co by pomohlo.']:S.shared&&!S.eSeenRes?['e_results','Vedení zveřejnilo, jak průzkum dopadl.']:!cd?['e_chall','Zkuste první pětiminutovou výzvu. Kolik jich zkusíte, vidíte jen vy.']:['e_wiki','Podívejte se, co u nás funguje. Možná to ušetří čas i vám.'];
   return '<section class="slide wide">'+head('Pro vás','AI ve firmě '+(S.firm||''),(t&&(t.amb||'').trim()?'Váš ambasador: '+t.amb+'. ':'')+'Vrátit se sem můžete kdykoli.')+
-   goalCard(0)+(S.myTeam?tvCard(S.myTeam,1):'')+weekCard()+'<div class="cont" style="margin-bottom:20px"><div class="eyebrow">Doporučujeme</div><b>'+esc(EMP_SLIDES[eIdx(nx[0])][1])+'</b><div class="small mute">'+esc(nx[1])+'</div><button class="btn" data-act="eslide" data-k="'+nx[0]+'">Pokračovat <span aria-hidden="true">→</span></button></div>'+
+   goalCard(0)+(S.myTeam?tvCard(S.myTeam,1):'')+weekCard()+'<div class="cont" style="margin-bottom:20px"><div class="eyebrow">Doporučujeme</div><b>'+esc(EMP_SLIDES[eIdx(nx[0])][1])+'</b><div class="small mute">'+esc(nx[1])+'</div><button class="btn" data-act="eslide" data-k="'+nx[0]+'">Pokračovat <span class="ar r" aria-hidden="true">→</span></button></div>'+
    '<div class="tiles">'+tile('e_survey','Dotazník',S.submitted?'Vyplněno':'Čeká','anonymní, 3 minuty')+tile('e_results','Výsledky průzkumu',S.shared?'Zveřejněno':'Zatím ne','shrnutí od vedení')+tile('e_fears','Obavy a otázky',ans,nplural(ans,'zodpovězená otázka','zodpovězené otázky','zodpovězených otázek'))+tile('e_chall','Výzvy a pravidla',cd+' / '+CHALL.length,'vyzkoušeno, vidíte jen vy')+
    tile('e_ideas','Mám nápad',ni,nplural(ni,'nápad z týmu','nápady z týmu','nápadů z týmu'))+tile('e_wiki','Co u nás funguje',wiki.length,nplural(wiki.length,'postup funguje','postupy fungují','postupů funguje'))+'</div>'+
    '<div class="stack" style="margin-top:20px">'+companyTree()+meetBlock('emp')+'</div>'+
@@ -1316,13 +1483,13 @@ function askBlock(){
 var ESL={e_hi:eHi,e_survey:eSurvey,e_team:eTeam,e_results:eResults,e_fears:eFears,e_wiki:eWiki,e_chall:eChall,e_ideas:eIdeas,e_err:eErr};
 function eChbar(k){
   var i=eIdx(k),g=EMP_SLIDES[i][2],inG=EMP_SLIDES.filter(function(s){return s[2]===g}),pos=inG.map(function(s){return s[0]}).indexOf(k);
-  return '<div class="chbar"><button class="btn ghost sm" data-act="ehub"><span aria-hidden="true">←</span> Přehled</button><div class="chinfo"><span class="eyebrow">'+esc(EMP_GROUP[g])+'</span><b>'+esc(EMP_SLIDES[i][1])+'</b></div>'+crumbs(inG.map(function(s){return [s[0],s[1]]}),pos,'eslide')+'</div>';
+  return '<div class="chbar"><button class="btn ghost sm" data-act="ehub"><span class="ar l" aria-hidden="true">←</span> Přehled</button><div class="chinfo"><span class="eyebrow">'+esc(EMP_GROUP[g])+'</span><b>'+esc(EMP_SLIDES[i][1])+'</b></div>'+crumbs(inG.map(function(s){return [s[0],s[1]]}),pos,'eslide')+'</div>';
 }
 function ePager(k){
   var i=eIdx(k),prev=EMP_SLIDES[i-1],next=EMP_SLIDES[i+1];
-  return '<nav class="pager" aria-label="Postup">'+(prev?'<button class="btn ghost" data-act="eslide" data-k="'+prev[0]+'"><span aria-hidden="true">←</span> '+esc(prev[1])+'</button>':'<span></span>')+
+  return '<nav class="pager" aria-label="Postup">'+(prev?'<button class="btn ghost" data-act="eslide" data-k="'+prev[0]+'"><span class="ar l" aria-hidden="true">←</span> '+esc(prev[1])+'</button>':'<span></span>')+
    '<div class="pinfo"></div>'+
-   (next?'<button class="btn" data-act="eslide" data-k="'+next[0]+'">Dál: '+esc(next[1])+' <span aria-hidden="true">→</span></button>':'<button class="btn" data-act="ehub">Na přehled <span aria-hidden="true">→</span></button>')+'</nav>';
+   (next?'<button class="btn" data-act="eslide" data-k="'+next[0]+'">Dál: '+esc(next[1])+' <span class="ar r" aria-hidden="true">→</span></button>':'<button class="btn" data-act="ehub">Na přehled <span class="ar r" aria-hidden="true">→</span></button>')+'</nav>';
 }
 function vEmp(){
   if(S.eview==='slide'&&ESL[S.eslide])return eChbar(S.eslide)+ESL[S.eslide]()+ePager(S.eslide);
@@ -1349,15 +1516,30 @@ function surveyForm(pv){
 /* horní ukazatel kapitoly a spodní lišta Zpět / Dál */
 function chbar(k){
   var i=sIdx(k),c=SLIDES[i][1],inCh=chSlides(c),pos=inCh.map(function(s){return s[0]}).indexOf(k);
-  return '<div class="chbar"><button class="btn ghost sm" data-act="hub"><span aria-hidden="true">←</span> Rozcestník</button><div class="chinfo"><span class="eyebrow">Kapitola '+(c+1)+' ze '+CH.length+'</span><b>'+esc(CH[c][0])+'</b></div>'+
+  return '<div class="chbar"><button class="btn ghost sm" data-act="hub"><span class="ar l" aria-hidden="true">←</span> Rozcestník</button><div class="chinfo"><span class="eyebrow">Kapitola '+(c+1)+' ze '+CH.length+'</span><b>'+esc(CH[c][0])+'</b></div>'+
    crumbs(inCh.map(function(s){return [s[0],s[2]]}),pos,'slide')+'</div>';
 }
 function pager(k){
   var i=sIdx(k),c=SLIDES[i][1],prev=SLIDES[i-1],next=SLIDES[i+1],inCh=chSlides(c),pos=inCh.map(function(s){return s[0]}).indexOf(k);
   var dis=(k==='firm'&&!setupOk())||(k==='teams'&&!active().length);
-  var left=prev?'<button class="btn ghost" data-act="slide" data-k="'+prev[0]+'"><span aria-hidden="true">←</span> '+esc(prev[2])+'</button>':'<button class="btn ghost" data-act="intro"><span aria-hidden="true">←</span> Úvod</button>';
-  var right=next?'<button class="btn" id="go1" data-act="slide" data-k="'+next[0]+'"'+(dis?' disabled':'')+'>Dál: '+(next[1]!==c?'kapitola '+(next[1]+1)+' · ':'')+esc(next[2])+' <span aria-hidden="true">→</span></button>':'<button class="btn" data-act="hub">Na rozcestník <span aria-hidden="true">→</span></button>';
+  var left=prev?'<button class="btn ghost" data-act="slide" data-k="'+prev[0]+'"><span class="ar l" aria-hidden="true">←</span> '+esc(prev[2])+'</button>':'<button class="btn ghost" data-act="intro"><span class="ar l" aria-hidden="true">←</span> Úvod</button>';
+  var right=next?'<button class="btn" id="go1" data-act="slide" data-k="'+next[0]+'"'+(dis?' disabled':'')+'>Dál: '+(next[1]!==c?'kapitola '+(next[1]+1)+' · ':'')+esc(next[2])+' <span class="ar r" aria-hidden="true">→</span></button>':'<button class="btn" data-act="hub">Na rozcestník <span class="ar r" aria-hidden="true">→</span></button>';
   return '<nav class="pager" aria-label="Postup">'+left+'<div class="pinfo">'+(dis?'<span class="phint" id="go1h">'+(k==='firm'?'Vyplňte název firmy a co pro vás AI znamená.':'Zapněte aspoň jeden tým.')+'</span>':'')+'</div>'+right+'</nav>';
+}
+/* Odhalení jen při změně obrazovky: render() přepisuje #app po každé akci, animace by se jinak opakovala. */
+var lastScreen=null,revealIO=null;
+function reveal(hadBody){
+  var t=document.querySelector('#app h1,#app h2'),key=S.role+'|'+S.view+'|'+(t?t.textContent:'');
+  $('#app').classList.remove('fill');
+  if(key===lastScreen)return;lastScreen=key;
+  if(revealIO)revealIO.disconnect();
+  if(!hadBody||!window.IntersectionObserver||!window.matchMedia||window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var app=$('#app');app.classList.add('fill');
+  revealIO=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');revealIO.unobserve(e.target)}})},{rootMargin:'0px 0px -6% 0px'});
+  app.querySelectorAll('.slide>h1,.slide>.lead,.intro>*,.slide>.card,.slide>.plain,.slide>.grid,.slide>.kpis,.slide>.next,.hero>:first-child,#app>.card,#app>.grid').forEach(function(n,i){
+    n.classList.add('rv');n.style.setProperty('--d',Math.min(i,4)*50+'ms');
+    void n.offsetWidth;revealIO.observe(n);
+  });
 }
 function render(){
   var y=window.scrollY;
@@ -1374,14 +1556,16 @@ function render(){
   else if(S.role==='emp')body=vEmp();
   else if(S.view==='slide'&&SL[S.slide])body=chbar(S.slide)+SL[S.slide]()+pager(S.slide);
   else if(S.view==='deck')body=vDeck();
-  else if(S.view==='qpreview')body='<div class="chbar"><button class="btn ghost sm" data-act="back"><span aria-hidden="true">←</span> Zpět</button><div class="chinfo"><span class="eyebrow">Náhled</span><b>Takhle dotazník uvidí zaměstnanci</b></div><span></span></div><section class="slide"><div class="note" style="margin-bottom:18px">Je to jen náhled pro vedení. Zaměstnanci dostanou dotazník přes odkaz svého týmu. Co tady vyplníte, se nikam neuloží.</div>'+surveyForm(true)+'</section>';
-  else if(S.view==='ucases')body='<div class="chbar"><button class="btn ghost sm" data-act="hub"><span aria-hidden="true">←</span> Rozcestník</button><div class="chinfo"><b>Use casy týmů</b></div><span></span></div>'+vUcases();
-  else if(S.view==='planv')body='<div class="chbar"><button class="btn ghost sm" data-act="back"><span aria-hidden="true">←</span> Zpět</button><div class="chinfo"><b>Plán a termíny</b></div><span></span></div>'+slPlan();
-  else if(S.view==='wins')body='<div class="chbar"><button class="btn ghost sm" data-act="hub"><span aria-hidden="true">←</span> Rozcestník</button><div class="chinfo"><b>Milníky</b></div><span></span></div>'+vWins();
+  else if(S.view==='qpreview')body='<div class="chbar"><button class="btn ghost sm" data-act="back"><span class="ar l" aria-hidden="true">←</span> Zpět</button><div class="chinfo"><span class="eyebrow">Náhled</span><b>Takhle dotazník uvidí zaměstnanci</b></div><span></span></div><section class="slide"><div class="note" style="margin-bottom:18px">Je to jen náhled pro vedení. Zaměstnanci dostanou dotazník přes odkaz svého týmu. Co tady vyplníte, se nikam neuloží.</div>'+surveyForm(true)+'</section>';
+  else if(S.view==='ucases')body='<div class="chbar"><button class="btn ghost sm" data-act="hub"><span class="ar l" aria-hidden="true">←</span> Rozcestník</button><div class="chinfo"><b>Use casy týmů</b></div><span></span></div>'+vUcases();
+  else if(S.view==='planv')body='<div class="chbar"><button class="btn ghost sm" data-act="back"><span class="ar l" aria-hidden="true">←</span> Zpět</button><div class="chinfo"><b>Plán a termíny</b></div><span></span></div>'+slPlan();
+  else if(S.view==='wins')body='<div class="chbar"><button class="btn ghost sm" data-act="hub"><span class="ar l" aria-hidden="true">←</span> Rozcestník</button><div class="chinfo"><b>Milníky</b></div><span></span></div>'+vWins();
   else if(S.view==='hub')body=vHub();
   else body=vIntro();
+  var prevBody=$('#app').firstChild;
   $('#app').innerHTML=(S.demo?'<div class="demo-bar">Prohlížíte <b>ukázkovou firmu</b>. Všechna čísla, jména a odpovědi jsou vymyšlené.</div>':'')+body;
   $('#foot').innerHTML='<span>Ukázka (MVP): data zůstávají jen v tomto prohlížeči.</span><button class="btn ghost sm" data-act="demo">Načíst ukázkovou firmu</button><button class="btn ghost sm" data-act="about">O projektu</button><button class="btn ghost sm" data-act="reset">'+(resetArm?'Opravdu smazat vše? Klikněte znovu':'Začít znovu')+'</button>';
+  reveal(prevBody);
   if(focusEl){var el=document.getElementById(focusEl);focusEl='';if(el){el.scrollIntoView({block:'start'});return}}
   window.scrollTo(0,y);
 }
@@ -1538,6 +1722,10 @@ function applyTheme(t,persist){
   var b=$('#theme');if(b){b.innerHTML=t==='dark'?'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>':'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';b.setAttribute('aria-label',t==='dark'?'Světlý režim':'Tmavý režim');b.title=b.getAttribute('aria-label')}
   if(persist)try{localStorage.setItem(TKEY,t)}catch(e){}
 }
+function setMenu(o){var m=$('#menu'),b=$('#burger');m.classList.toggle('open',o);b.setAttribute('aria-expanded',o?'true':'false');document.documentElement.classList.toggle('menu-open',o)}
+$('#burger').addEventListener('click',function(){setMenu(!$('#menu').classList.contains('open'))});
+$('#menu').addEventListener('click',function(e){var b=e.target.closest('button');if(b&&b.id!=='theme')setMenu(false)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&$('#menu').classList.contains('open')){setMenu(false);$('#burger').focus()}});
 $('#theme').addEventListener('click',function(){applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark',true)});
 var th='light';try{th=localStorage.getItem(TKEY)||'light'}catch(e){}
 applyTheme(th,false);
