@@ -28,7 +28,13 @@ Průvodce není jen komunikační strategie ani sada use casů. Postoj k AI mě�
 
 ## Role
 
-Portál rozlišuje pohled **vedení** a **ambasadora** (kolegy, který AI v týmu pomáhá zavádět). Po přihlášení pracovním e-mailem otevře správný pohled.
+Portál rozlišuje tři pohledy:
+
+- **Vedení** zakládá portál, nastavuje pravidla a z jednoho místa prezentuje a rozesílá.
+- **Ambasador** je kolega, který AI v týmu pomáhá zavádět.
+- **Zaměstnanec** prochází průvodce, vyplňuje dotazníky, sdílí tipy a roste spolu s ostatními.
+
+Po přihlášení pracovním e-mailem se otevře správný pohled.
 
 ## Ukázková firma
 
